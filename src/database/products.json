@@ -1,0 +1,112 @@
+[
+  {
+      "id": 1,
+      "title": "Pizza tradicional Carnes",
+      "amount": "12\"",
+      "price": 7.99,
+      "description": "Una deliciosa combinación de carnes seleccionadas sobre una base de salsa de tomate y queso mozzarella.",
+      "favorite": true,
+      "discount": true,
+      "discountPer": -50,
+      "discountUni": "2und."
+  },
+  {
+      "id": 2,
+      "title": "Pizza tradicional Napolitana",
+      "amount": "12\"",
+      "price": 15.50,
+      "description": "La auténtica pizza napolitana con salsa de tomate, mozzarella fresca, albahaca y un toque de aceite de oliva.",
+      "favorite": true,
+      "discount": true,
+      "discountPer": -30,
+      "discountUni": "3Und."
+  },
+  {
+      "id": 3,
+      "title": "Pizza tradicional Hawaiana",
+      "amount": "12\"",
+      "price": 15.50,
+      "description": "Una mezcla única de piña jugosa y jamón que le da a esta pizza un sabor tropical.",
+      "favorite": true,
+      "discount": false,
+      "discountPer": 0,
+      "discountUni": ""
+  },
+  {
+      "id": 4,
+      "title": "Pizza tradicional Maíz y Tocineta",
+      "amount": "12\"",
+      "price": 15.50,
+      "description": "El dulzor del maíz combina perfectamente con la tocineta crujiente en esta deliciosa pizza.",
+      "favorite": false,
+      "discount": false,
+      "discountPer": 0,
+      "discountUni": ""
+  },
+  {
+      "id": 5,
+      "title": "Pizza tradicional Bocadillo y Queso",
+      "amount": "12\"",
+      "price": 10.50,
+      "description": "El dulce sabor del bocadillo se funde con el queso en esta combinación única y tradicional.",
+      "favorite": false,
+      "discount": false,
+      "discountPer": 0,
+      "discountUni": ""
+  },
+  {
+      "id": 6,
+      "title": "Pizza tradicional Jamón y Pollo",
+      "amount": "12\"",
+      "price": 22.90,
+      "description": "Jamón y pollo a la parrilla sobre una base de queso fundido y salsa de tomate.",
+      "favorite": false,
+      "discount": true,
+      "discountPer": -50,
+      "discountUni": "2und."
+  },
+  {
+      "id": 7,
+      "title": "Pizza tradicional Pollo y Tocineta",
+      "amount": "12\"",
+      "price": 12.45,
+      "description": "Una jugosa mezcla de pollo y tocineta sobre una base de queso mozzarella y salsa de tomate.",
+      "favorite": true,
+      "discount": false,
+      "discountPer": 0,
+      "discountUni": ""
+  },
+  {
+      "id": 8,
+      "title": "Pizza especial Thai",
+      "amount": "12\"",
+      "price": 9.60,
+      "description": "Exótica mezcla de ingredientes tailandeses con un toque picante y un equilibrio perfecto de sabores.",
+      "favorite": false,
+      "discount": false,
+      "discountPer": 0,
+      "discountUni": ""
+  },
+  {
+      "id": 9,
+      "title": "Pizza especial Colombiana",
+      "amount": "12\"",
+      "price": 6.95,
+      "description": "Una combinación especial de ingredientes típicos colombianos para darle un sabor único y auténtico.",
+      "favorite": false,
+      "discount": false,
+      "discountPer": 0,
+      "discountUni": ""
+  },
+  {
+      "id": 10,
+      "title": "Pizza especial Pollo Camarón",
+      "amount": "12\"",
+      "price": 73.70,
+      "description": "Deliciosa combinación de pollo y camarón sobre una base cremosa con un toque de ajo.",
+      "favorite": false,
+      "discount": false,
+      "discountPer": 0,
+      "discountUni": ""
+  }
+]
