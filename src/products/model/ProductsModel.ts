@@ -4,6 +4,7 @@ import EnvironmentBack from '../shared/envBackend/EnvironmentBack'
 import Product from '../types/Product'
 import path from 'path'
 import { promises as fspr } from 'fs'
+const fetch = require('node-fetch');
 
 export default class ProductsModel {
   public fetchMovies = async (): Promise<Product[]> => {
