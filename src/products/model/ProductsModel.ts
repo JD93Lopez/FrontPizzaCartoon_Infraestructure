@@ -4,7 +4,7 @@ import EnvironmentBack from '../shared/envBackend/EnvironmentBack'
 import Product from '../types/Product'
 import path from 'path'
 import { promises as fspr } from 'fs'
-const fetch = require('node-fetch');
+import axios from 'axios'
 
 export default class ProductsModel {
   public fetchMovies = async (): Promise<Product[]> => {
@@ -44,38 +44,26 @@ export default class ProductsModel {
 
   public newProduct = async (product: Product): Promise<boolean> => {
     const res = await this.productChanges(await EnvironmentBack.getEndpointNewProduct(), product, 'POST');
-    if (res) {
-      return true
-    } else {
-      return false
-    }
-  }
+    return !!res;
+  };
 
   public deleteProduct = async (productId: number): Promise<boolean> => {
     const res = await this.productChanges(await EnvironmentBack.getEndpointDeleteProduct(), { productId }, 'DELETE');
-    if (res) {
-      return true
-    } else {
-      return false
-    }
-  }
+    return !!res;
+  };
 
   public updateProduct = async (product: Product): Promise<boolean> => {
     const res = await this.productChanges(await EnvironmentBack.getEndpointUpdateProduct(), product, 'POST');
-    if (res) {
-      return true
-    } else {
-      return false
-    }
-  }
+    return !!res;
+  };
 
   public async productsJson(): Promise<Product[]> {
     try {
-      const response = await fetch(await EnvironmentBack.getEndpointProducts());
+      const response = await axios.get(await EnvironmentBack.getEndpointProducts());
       if (response.status !== 200) {
         return [];
       }
-      return (await response.json()) as Product[];
+      return response.data as Product[];
     } catch (error) {
       console.error('Error:', error);
       return [];
@@ -84,16 +72,18 @@ export default class ProductsModel {
 
   productChanges = async (link: string, body: any, method: string) => {
     try {
-      const response = await fetch(link, {
-        method,
+      const response = await axios({
+        url: link,
+        method: method,
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(body)
+        data: body
       });
-      return response.json();
+      return response.data;
     }
     catch (error) {
+      console.error('Error en productChanges:', error);
       return false;
     }
   };
