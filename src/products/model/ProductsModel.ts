@@ -1,5 +1,5 @@
 // import products_json from '../../database/products.json'
-import Environment from '../shared/Environment'
+// import Environment from '../shared/Environment'
 import EnvironmentBack from '../shared/envBackend/EnvironmentBack'
 import Product from '../types/Product'
 import path from 'path'
@@ -20,7 +20,7 @@ export default class ProductsModel {
         "discount": product.discount,
         "discountPer": product.discountPer,
         "discountUni": product.discountUni,
-        "image": `${Environment.getDomain()}/api/v1.0/store/products/product/image/${product.id
+        "image": `https://bucket-pizzacartoon.s3.amazonaws.com/${product.id
           }.jpg`,
       }
     })
