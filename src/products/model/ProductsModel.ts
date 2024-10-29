@@ -1,10 +1,9 @@
 // import products_json from '../../database/products.json'
-// import Environment from '../shared/Environment'
+import Environment from '../shared/Environment'
 import EnvironmentBack from '../shared/envBackend/EnvironmentBack'
 import Product from '../types/Product'
 import path from 'path'
 import { promises as fspr } from 'fs'
-import axios from 'axios'
 
 export default class ProductsModel {
   public fetchMovies = async (): Promise<Product[]> => {
@@ -20,7 +19,7 @@ export default class ProductsModel {
         "discount": product.discount,
         "discountPer": product.discountPer,
         "discountUni": product.discountUni,
-        "image": `https://bucket-pizzacartoon.s3.amazonaws.com/${product.id
+        "image": `${Environment.getDomain()}/api/v1.0/store/products/product/image/${product.id
           }.jpg`,
       }
     })
@@ -44,26 +43,38 @@ export default class ProductsModel {
 
   public newProduct = async (product: Product): Promise<boolean> => {
     const res = await this.productChanges(await EnvironmentBack.getEndpointNewProduct(), product, 'POST');
-    return !!res;
-  };
+    if (res) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   public deleteProduct = async (productId: number): Promise<boolean> => {
     const res = await this.productChanges(await EnvironmentBack.getEndpointDeleteProduct(), { productId }, 'DELETE');
-    return !!res;
-  };
+    if (res) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   public updateProduct = async (product: Product): Promise<boolean> => {
     const res = await this.productChanges(await EnvironmentBack.getEndpointUpdateProduct(), product, 'POST');
-    return !!res;
-  };
+    if (res) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   public async productsJson(): Promise<Product[]> {
     try {
-      const response = await axios.get(await EnvironmentBack.getEndpointProducts());
+      const response = await fetch(await EnvironmentBack.getEndpointProducts());
       if (response.status !== 200) {
         return [];
       }
-      return response.data as Product[];
+      return (await response.json()) as Product[];
     } catch (error) {
       console.error('Error:', error);
       return [];
@@ -72,18 +83,16 @@ export default class ProductsModel {
 
   productChanges = async (link: string, body: any, method: string) => {
     try {
-      const response = await axios({
-        url: link,
-        method: method,
+      const response = await fetch(link, {
+        method,
         headers: {
           'Content-Type': 'application/json'
         },
-        data: body
+        body: JSON.stringify(body)
       });
-      return response.data;
+      return response.json();
     }
     catch (error) {
-      console.error('Error en productChanges:', error);
       return false;
     }
   };
