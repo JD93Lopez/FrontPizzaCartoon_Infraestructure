@@ -19,7 +19,7 @@ export default class ProductsModel {
         "discount": product.discount,
         "discountPer": product.discountPer,
         "discountUni": product.discountUni,
-        "image": `${Environment.getDomain()}/api/v1.0/store/products/product/image/${product.id
+        "image": `https://pizzacartoonbucket.s3.us-east-1.amazonaws.com/${product.id
           }.jpg`,
       }
     })
